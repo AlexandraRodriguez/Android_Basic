@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores Material Design: http://www.google.com/design/spec/style/color.html#color-color-palette -->
+    <!--<color name="background_numbers">#333333</color>-->
+    <!--<color name="background_operations">#555555</color>-->
+
+    <color name="background_numbers">#2196F3</color>
+    <color name="background_operations">#0D47A1</color>
+    <color name="background_results">#FFFFFF</color>
+
+    <color name="background_btn_equals">#0D47A1</color>
+
+
+
+    <color name="text_numbers_colors">#FFFFFF</color>
+    <color name="text_operations_color">#FFFFFF</color>
+    <color name="text_results_color">#333333</color>
+</resources>
