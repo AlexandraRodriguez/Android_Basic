@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Preliminares"
+        android:id="@+id/preliminares"
+        android:background="@color/light_red"
+        android:layout_margin="14sp"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Cuartos de Final"
+        android:id="@+id/cuartos"
+        android:background="@color/light_red"
+        android:layout_margin="14sp" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Semifinales"
+        android:id="@+id/semifinales"
+        android:background="@color/light_red"
+        android:layout_margin="14sp"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Final"
+        android:id="@+id/finales"
+        android:background="@color/light_red"
+        android:layout_margin="14sp"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Resultados"
+        android:id="@+id/resultados"
+        android:background="@color/light_red"
+        android:layout_margin="14sp"/>
+
+
+</LinearLayout>
