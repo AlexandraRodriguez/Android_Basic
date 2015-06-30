@@ -29,7 +29,8 @@
         <ListView
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:id="@+id/list1">
 
         </ListView>
 
@@ -37,14 +38,16 @@
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="@color/gray">
+            android:background="@color/gray"
+            android:id="@+id/listRes">
 
         </ListView>
 
         <ListView
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:id="@+id/list2">
 
         </ListView>
 
