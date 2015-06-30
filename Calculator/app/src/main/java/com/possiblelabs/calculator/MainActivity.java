@@ -1,6 +1,7 @@
 package com.possiblelabs.calculator;
 
 import android.app.Activity;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private ImageButton btnMultiply;
     private ImageButton btnDivide;
     private ImageButton btnEquals;
+    private ImageButton btnBack;
 
     private double op1 = -1;
     private boolean op1_set = false;
@@ -51,6 +53,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnMultiply = (ImageButton) findViewById(R.id.btn_multiply);
         btnDivide = (ImageButton) findViewById(R.id.btn_divide);
         btnEquals = (ImageButton) findViewById(R.id.btn_equals);
+        btnBack = (ImageButton) findViewById(R.id.btn_back);
 
         btnNumbers[0] = (Button) findViewById(R.id.btn_0);
         btnNumbers[1] = (Button) findViewById(R.id.btn_1);
@@ -80,6 +83,28 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 divide = false;
                 txtOperation.setText("");
                 txtResult.setText("");
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String texto = txtResult.getText().toString();
+                int tam = texto.length();
+                if(!op1_set)
+                    if(tam>0){
+                        if(tam==1) {
+                            txtResult.setText("");
+                        }else{
+                            if(tam==2){
+                                texto = texto.charAt(0)+"";
+                                txtResult.setText(texto);
+                            }else{
+                                texto = texto.substring(0, tam-2);
+                                txtResult.setText(texto);
+                        }
+                    }
+                }
             }
         });
 
