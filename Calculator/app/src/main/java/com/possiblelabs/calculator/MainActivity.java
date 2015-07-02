@@ -20,13 +20,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private TextView txtResult;
     private TextView txtOperation;
-    private ImageButton btnClear;
-    private ImageButton btnPlus;
-    private ImageButton btnMinus;
-    private ImageButton btnMultiply;
-    private ImageButton btnDivide;
-    private ImageButton btnEquals;
-    private ImageButton btnBack;
+    private Button btnClear;
+    private Button btnPlus;
+    private Button btnMinus;
+    private Button btnMultiply;
+    private Button btnDivide;
+    private Button btnEquals;
+    private Button btnBack;
+    private Button btnNeg;
 
     private double op1 = -1;
     private boolean op1_set = false;
@@ -36,6 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private boolean minus = false;
     private boolean multiply = false;
     private  boolean divide = false;
+    private boolean neg = false;
 
 
 
@@ -47,13 +49,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnNumbers = new Button[BUTTONS_SIZE];
         txtResult = (TextView) findViewById(R.id.txt_result);
         txtOperation = (TextView) findViewById(R.id.txt_operation);
-        btnClear = (ImageButton) findViewById(R.id.btn_clear);
-        btnPlus = (ImageButton) findViewById(R.id.btn_plus);
-        btnMinus = (ImageButton) findViewById(R.id.btn_minus);
-        btnMultiply = (ImageButton) findViewById(R.id.btn_multiply);
-        btnDivide = (ImageButton) findViewById(R.id.btn_divide);
-        btnEquals = (ImageButton) findViewById(R.id.btn_equals);
-        btnBack = (ImageButton) findViewById(R.id.btn_back);
+        btnClear = (Button) findViewById(R.id.btn_clear);
+        btnPlus = (Button) findViewById(R.id.btn_plus);
+        btnMinus = (Button) findViewById(R.id.btn_minus);
+        btnMultiply = (Button) findViewById(R.id.btn_multiply);
+        btnDivide = (Button) findViewById(R.id.btn_divide);
+        btnEquals = (Button) findViewById(R.id.btn_equals);
+        btnBack = (Button) findViewById(R.id.btn_back);
+        btnNeg = (Button) findViewById(R.id.btn_neg);
 
         btnNumbers[0] = (Button) findViewById(R.id.btn_0);
         btnNumbers[1] = (Button) findViewById(R.id.btn_1);
@@ -82,7 +85,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 multiply = false;
                 divide = false;
                 txtOperation.setText("");
-                txtResult.setText("");
+                txtResult.setText("0");
             }
         });
 
@@ -94,7 +97,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 if(!op1_set)
                     if(tam>0){
                         if(tam==1) {
-                            txtResult.setText("");
+                            txtResult.setText("0");
                         }else{
                             if(tam==2){
                                 texto = texto.charAt(0)+"";
@@ -108,6 +111,38 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         });
 
+        btnNeg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String texto = txtResult.getText().toString();
+                int tam = texto.length();
+                if(op1_set){
+                    texto = "-";
+                    neg=true;
+                }else{
+                    if(tam==1){
+                        if(texto.equals("-")) {
+                            texto = "0";
+                            neg = false;
+                        }else{
+                            texto = "-" +texto;
+                            neg = true;
+                        }
+                    }else{
+                        if(tam>1)
+                            if(texto.charAt(0)=='-') {
+                                texto = texto.substring(1);
+                                neg = false;
+                            }else {
+                                texto = "-" + texto;
+                                neg = true;
+                            }
+                    }
+                }
+                txtResult.setText(texto);
+            }
+        });
+
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,6 +150,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 txtOperation.setText("+");
                 op1 = Double.parseDouble(txtResult.getText().toString());
                 op1_set = true;
+                neg=false;
             }
         });
 
@@ -125,6 +161,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 txtOperation.setText("-");
                 op1 = Double.parseDouble(txtResult.getText().toString());
                 op1_set = true;
+                neg=false;
             }
         });
 
@@ -135,6 +172,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 txtOperation.setText("*");
                 op1 = Double.parseDouble(txtResult.getText().toString());
                 op1_set = true;
+                neg=false;
             }
         });
 
@@ -145,6 +183,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 txtOperation.setText("/");
                 op1 = Double.parseDouble(txtResult.getText().toString());
                 op1_set = true;
+                neg=false;
             }
         });
 
@@ -172,6 +211,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 txtResult.setText(op2 + "");
                 txtOperation.setText("");
+                op1_set=false;
+                neg=false;
             }
         });
 
@@ -184,6 +225,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             if (pressed == btn) {
 
                 if (op1_set) {
+                    if(!neg)
                     txtResult.setText("");
                     op1_set = false;
                 }

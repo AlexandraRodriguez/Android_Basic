@@ -7,14 +7,20 @@
     <color name="background_numbers">#2196F3</color>
     <color name="background_operations">#0D47A1</color>
     <color name="background_results">#FFFFFF</color>
-
     <color name="blue_bright">#00ddff</color>
-
     <color name="background_btn_equals">#0D47A1</color>
-
     <color name="gray">#aaaaaa</color>
     <color name="black">#000000</color>
-
     <color name="text_numbers_colors">#FFFFFF</color>
     <color name="text_operations_color">#FFFFFF</color>
+
+    <color name="light_gray">#b7c0c7</color>
+    <color name="lavender">#838cc7</color>
+    <color name="purple">#7d669e</color>
+    <color name="pink">#f092b0</color>
+    <color name="mauve">#c25975</color>
+    <color name="aqua">#53bbb4</color>
+    <color name="dark_blue">#3079ab</color>
+    <color name="light_blue">#39add1</color>
+
 </resources>
