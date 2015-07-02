@@ -8,6 +8,18 @@ import java.util.List;
  */
 public class Juego {
 
+    public static void jugarPorGrupo(List<String> grupo,List<String> g1,List<String> g2,List<String> res ){
+        String e1 = grupo.remove(0); String e2 = grupo.remove(0);
+        String e3 = grupo.remove(0); String e4 = grupo.remove(0);
+
+        jugar(e1, e2, g1, g2, res);
+        jugar(e2, e3, g1, g2, res);
+        jugar(e4, e1, g1, g2, res);
+        jugar(e3, e4, g1, g2, res);
+        jugar(e1, e3, g1, g2, res);
+        jugar(e4, e2, g1, g2, res);
+    }
+
     public static List<String> jugarTodos(List<String> ini,List<String> g1,List<String> g2,List<String> res ){
         List<String> listFinal = new ArrayList<String>();
         int tam = ini.size()/2;
