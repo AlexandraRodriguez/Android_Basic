@@ -1,10 +1,16 @@
 package com.campeonato.alexandra.copa;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.campeonato.alexandra.copa.util.EquiposSQLiteHelper;
 
 /**
  * Created by Alexandra on 29/06/15.
@@ -16,6 +22,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private Button btnSemifinales;
     private Button btnFinales;
     private Button btnRes;
+    private EquiposSQLiteHelper helper;
+    private TextView mensaje;
+
 
     @Override
     public void onCreate(Bundle bundle){
@@ -33,7 +42,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnRes = (Button)findViewById(R.id.resultados);
         btnRes.setOnClickListener(this);
 
+        helper = new EquiposSQLiteHelper(MainActivity.this);
+        insertarEquipos();
 
+
+    }
+
+    private void insertarEquipos(){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("equipo", "Bolivia");
+        values.put("puntaje", "0");
+        values.put("clasificado", "1");
+        db.insert("Registro", null, values);
     }
 
 

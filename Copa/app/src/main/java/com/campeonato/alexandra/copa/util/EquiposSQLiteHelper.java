@@ -4,25 +4,40 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by Ale on 01/07/2015.
- */
 public class EquiposSQLiteHelper extends SQLiteOpenHelper {
 
-    String sqlCreate = "CREATE TABLE Equipos (equipo TEXT, puntaje INTEGER, clasificado )";
+    final static String TABLE_NAME = "Registro";
+    final static String PAIS = "equipo";
+    final static String PUNTOS = "puntaje";
+    final static String CLASIFICACION = "clasificado";
+    final static String[] columns = {PAIS, PUNTOS, CLASIFICACION};
 
-    public EquiposSQLiteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    final private static String CREATE_DB =
+
+    "CREATE TABLE equipo (" +  PAIS + " TEXT PRIMARY KEY, "
+            + PUNTOS + "INTEGER, "
+            + CLASIFICACION + "INTEGER)";
+
+    final private static String NAME = "equipos_db";
+    final private static Integer VERSION = 1;
+    final private Context mContext;
+
+    public EquiposSQLiteHelper(Context context) {
+        super(context,NAME, null, VERSION);
+        this.mContext = context;
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(sqlCreate);
+
+        db.execSQL(CREATE_DB);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS Equipos");
-        db.execSQL(sqlCreate);
+        db.execSQL(CREATE_DB);
     }
+
 }

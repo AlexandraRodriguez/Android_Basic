@@ -43,5 +43,12 @@
         android:background="@color/light_red"
         android:layout_margin="14sp"/>
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textomain"
+        android:background="@color/light_red"
+        android:textSize="40dp" />
+
 
 </LinearLayout>
