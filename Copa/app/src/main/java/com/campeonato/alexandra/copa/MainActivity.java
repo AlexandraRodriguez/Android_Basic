@@ -6,16 +6,15 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.campeonato.alexandra.copa.util.EquiposSQLiteHelper;
 
-/**
- * Created by Alexandra on 29/06/15.
- */
-public class MainActivity extends Activity implements View.OnClickListener {
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnPreliminares;
     private Button btnCuartos;
@@ -75,5 +74,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 startActivity( new Intent(this, Final.class));
 
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 }

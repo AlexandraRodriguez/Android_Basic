@@ -8,6 +8,11 @@ import java.util.List;
  */
 public class Juego {
 
+    private static boolean preliminares = false;
+    private static boolean cuartos = false;
+    private static boolean semifinales = false;
+    private static boolean finales = false;
+
     public static void jugarPorGrupo(List<String> grupo,List<String> g1,List<String> g2,List<String> res ){
         String e1 = grupo.remove(0); String e2 = grupo.remove(0);
         String e3 = grupo.remove(0); String e4 = grupo.remove(0);
@@ -50,5 +55,30 @@ public class Juego {
 
         return result;
 
+    }
+
+    public static boolean getPreliminares(){
+        return preliminares;
+    }
+    public static boolean getCuartos(){
+        return cuartos;
+    }
+    public static boolean getSemifinales(){
+        return semifinales;
+    }
+    public static boolean getFinales(){
+        return finales;
+    }
+    public static void setFinales(boolean v){
+        finales = v;
+    }
+    public static void setPreliminares(boolean v){
+        preliminares = v;
+    }
+    public static void setCuartos(boolean v){
+        cuartos = v;
+    }
+    public static void setSemifinales(boolean v){
+        semifinales = v;
     }
 }

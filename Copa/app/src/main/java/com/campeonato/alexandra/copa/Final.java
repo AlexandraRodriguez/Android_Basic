@@ -40,7 +40,11 @@ public class Final extends Activity {
         res = (TextView)findViewById(R.id.textFinalRes);
         winner = (TextView)findViewById(R.id.textGanador);
 
-        ganador = jugar();
+        if(!Juego.getFinales())
+        if(Juego.getSemifinales()) {
+            ganador = jugar();
+            Juego.setFinales(true);
+        }
         setVistas();
     }
 

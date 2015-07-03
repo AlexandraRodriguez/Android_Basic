@@ -43,7 +43,11 @@ public class Cuartos extends Activity {
         equipos.add("Uruguay");
         equipos.add("Colombia");
 
-        clasificados = jugarTodos(equipos, grupo1, grupo2, resultados);
+        if(!Juego.getCuartos())
+        if(Juego.getPreliminares()) {
+            clasificados = jugarTodos(equipos, grupo1, grupo2, resultados);
+            Juego.setCuartos(true);
+        }
         setVistas();
     }
 

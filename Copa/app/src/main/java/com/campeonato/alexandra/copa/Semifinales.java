@@ -38,7 +38,11 @@ public class Semifinales extends Activity {
         equipos.add("Argentina");
         equipos.add("Paraguay");
 
-        clasificados = jugarTodos(equipos, grupo1, grupo2, resultados);
+        if(!Juego.getSemifinales())
+        if(Juego.getCuartos()) {
+            clasificados = jugarTodos(equipos, grupo1, grupo2, resultados);
+            Juego.setSemifinales(true);
+        }
         setVistas();
     }
 

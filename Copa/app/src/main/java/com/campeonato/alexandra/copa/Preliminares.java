@@ -45,10 +45,14 @@ public class Preliminares extends Activity {
         equipos.add("Venezuela");
         equipos.add("Jamaica");
         equipos.add("Ecuador");
-        agrupar();
-        Juego.jugarPorGrupo(grupoA, grupo1, grupo2, resultados);
-        Juego.jugarPorGrupo(grupoB, grupo1, grupo2, resultados);
-        Juego.jugarPorGrupo(grupoC, grupo1, grupo2, resultados);
+
+        if(!Juego.getPreliminares()) {
+            agrupar();
+            Juego.jugarPorGrupo(grupoA, grupo1, grupo2, resultados);
+            Juego.jugarPorGrupo(grupoB, grupo1, grupo2, resultados);
+            Juego.jugarPorGrupo(grupoC, grupo1, grupo2, resultados);
+            Juego.setPreliminares(true);
+        }
         setVistas();
     }
 
