@@ -14,13 +14,12 @@ import java.util.List;
 /**
  * Created by Alexandra on 29/06/15.
  */
-public class Cuartos extends Activity {
+public class  Cuartos extends Activity {
 
     private ArrayList<String> grupo1;
     private ArrayList<String> grupo2;
     private ArrayList<String> resultados;
     private ArrayList<String> equipos;
-    private List<String> clasificados;
     private ListView lista1;
     private ListView lista2;
     private ListView listaRes;
@@ -45,7 +44,7 @@ public class Cuartos extends Activity {
 
         if(!Juego.getCuartos())
         if(Juego.getPreliminares()) {
-            clasificados = jugarTodos(equipos, grupo1, grupo2, resultados);
+            jugarTodos(equipos, grupo1, grupo2, resultados);
             Juego.setCuartos(true);
         }
         setVistas();
