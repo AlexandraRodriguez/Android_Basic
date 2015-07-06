@@ -10,9 +10,9 @@ public class Clima {
     private double tempMaxima;
     private double tempMinima;
     private int humedad;
-    private int presion;
+    private double presion;
 
-    public Clima(double tempActual, double tempMaxima, double tempMinima, int humedad, int presion){
+    public Clima(double tempActual, double tempMaxima, double tempMinima, int humedad, double presion){
         this.tempActual = tempActual;
         this.tempMaxima = tempMaxima;
         this.tempMinima = tempMinima;
@@ -36,7 +36,7 @@ public class Clima {
         this.humedad = humedad;
     }
 
-    public void setPresion(int presion) {
+    public void setPresion(double presion) {
         this.presion = presion;
     }
 

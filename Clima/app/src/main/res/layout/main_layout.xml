@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccione una ciudad:"
+        android:id="@+id/textView"
+        android:textSize="20dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cochabamba"
+                android:id="@+id/btnCbba"
+                android:gravity="center"
+                android:onClick="onClick"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sucre"
+                android:id="@+id/btnSucre"
+                android:gravity="center"
+                android:onClick="onClick"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tarija"
+                android:id="@+id/btnTarija"
+                android:gravity="center"
+                android:onClick="onClick"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="La Paz"
+                android:id="@+id/btnLaPaz"
+                android:gravity="center"
+                android:onClick="onClick"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="El Alto"
+                android:id="@+id/btnElAlto"
+                android:gravity="center"
+                android:onClick="onClick"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Oruro"
+                android:id="@+id/btnOruro"
+                android:gravity="center"
+                android:onClick="onClick"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Potosi"
+                android:id="@+id/btnPotosi"
+                android:gravity="center"
+                android:onClick="onClick"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Santa Cruz"
+                android:id="@+id/btnSantaCruz"
+                android:gravity="center"
+                android:onClick="onClick"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beni"
+                android:id="@+id/btnBeni"
+                android:gravity="center"
+                android:onClick="onClick"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pando"
+                android:id="@+id/btnPando"
+                android:gravity="center"
+                android:onClick="onClick"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

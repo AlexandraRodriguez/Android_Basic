@@ -8,4 +8,14 @@ public class Conversor {
     public static double kelvinToCelsius(double kelvin){
         return kelvin - 273.15;
     }
+
+    private static String ciudad;
+
+    public static void setCiudad(String ciudadElegida){
+        ciudad = ciudadElegida;
+    }
+
+    public static String getCiudad(){
+        return ciudad;
+    }
 }
