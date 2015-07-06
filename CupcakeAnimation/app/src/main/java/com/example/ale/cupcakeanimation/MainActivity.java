@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.Window;
@@ -21,18 +22,29 @@ public class MainActivity extends Activity {
 
     class Panel extends SurfaceView implements SurfaceHolder.Callback{
         private CupThread thread;
+        private int x;
+        private int y;
 
         public Panel(Context context){
             super(context);
             getHolder().addCallback(this);
             thread = new CupThread(getHolder(), this);
+            setFocusable(true);
+            x=20; y=20;
         }
 
         @Override
         public void onDraw(Canvas canvas){
             Bitmap cupcake = BitmapFactory.decodeResource(getResources(), R.drawable.kawaiicupcake1);
             canvas.drawColor(Color.parseColor("#f092b0"));
-            canvas.drawBitmap(cupcake, 10, 10, null);
+            canvas.drawBitmap(cupcake, x-(cupcake.getWidth()/2), y-(cupcake.getHeight()/2), null);
+        }
+
+        @Override
+        public boolean onTouchEvent(MotionEvent event){
+            x = (int) event.getX();
+            y = (int) event.getY();
+            return true;
         }
 
         @Override
