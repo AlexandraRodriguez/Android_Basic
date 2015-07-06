@@ -4,10 +4,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-    <item android:id="@+id/cambiarCiudad"
-        android:title="Ciudad"
-        android:icon="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
-        android:orderInCategory="100"
-        app:showAsAction="ifRoom" />
-
 </menu>

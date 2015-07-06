@@ -5,18 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ClimaCiudad"
-    android:weightSum="7">
+    android:weightSum="7"
+    android:background="@color/dark_gray">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:layout_margin="10dp"
-        android:layout_weight="6">
+        android:layout_weight="5.5">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Ciudad"
+            android:textColor="@color/light_gray"
             android:layout_gravity="right"
             android:id="@+id/ciudad_actual"
             android:layout_weight="1" />
@@ -24,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="FechaActual"
+            android:textColor="@color/light_gray"
             android:layout_gravity="right"
             android:id="@+id/fecha_actual"
             android:layout_weight="1" />
@@ -34,7 +37,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:weightSum="5">
         <TextView
             android:layout_width="wrap_content"
@@ -44,15 +47,17 @@
             android:textSize="65dp"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:textColor="@color/white"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:id="@+id/descripcion"
-            android:text="Nublado"
+            android:text="Descripcion"
             android:textSize="30dp"
             android:layout_gravity="center"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:textColor="@color/purple"/>
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
@@ -66,18 +71,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="tempMax"
+                    android:text="Temperatura Maxima: "
                     android:id="@+id/tempMax"
-                    android:gravity="center"
                     android:layout_margin="10dp"
-                    android:textSize="20dp"/>
+                    android:textSize="15dp"
+                    android:textColor="@color/aqua"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="tempMin"
+                    android:text="Temperatura Minima: "
+                    android:textColor="@color/aqua"
                     android:layout_margin="10dp"
                     android:id="@+id/tempMin"
-                    android:textSize="20dp"/>
+                    android:textSize="15dp"/>
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
@@ -87,25 +93,31 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="humedad"
+                    android:text="Humedad: "
+                    android:textColor="@color/aqua"
                     android:id="@+id/humedad"
                     android:layout_margin="10dp"
-                    android:textSize="20dp"/>
+                    android:textSize="15dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="presion"
+                    android:text="Presión: "
+                    android:textColor="@color/aqua"
                     android:layout_margin="10dp"
                     android:id="@+id/presion"
-                    android:textSize="20dp"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Actualizar"
-                    android:id="@+id/actualizar" />
+                    android:textSize="15dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Actualizar"
+        android:id="@+id/actualizar"
+        android:layout_weight="0.5"
+        android:layout_gravity="center"
+        android:textColor="@color/lavender"/>
 
 
 </LinearLayout>

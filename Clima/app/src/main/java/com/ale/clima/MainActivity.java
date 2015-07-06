@@ -1,9 +1,7 @@
 package com.ale.clima;
 
-import android.app.Activity;
+
 import android.content.Intent;
-import android.net.http.AndroidHttpClient;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,21 +9,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
 import com.ale.clima.util.Conversor;
-import com.ale.clima.util.URLPorCiudad;
-
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-
-import java.io.IOException;
 
 
-/**
- * Created by Ale on 04/07/2015.
- */
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private Button btnCbba;
     private Button btnSucre;
     private Button btnTarija;
@@ -44,11 +31,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         setContentView(R.layout.main_layout);
 
         btnCbba = (Button)findViewById(R.id.btnCbba);
-        //btnCbba.setOnClickListener(this);
         btnSucre = (Button)findViewById(R.id.btnSucre);
-        //btnSucre.setOnClickListener(this);
         btnTarija = (Button)findViewById(R.id.btnTarija);
-        //btnTarija.setOnClickListener(this);
         btnLaPaz = (Button)findViewById(R.id.btnLaPaz);
         btnElAlto = (Button)findViewById(R.id.btnElAlto);
         btnOruro = (Button)findViewById(R.id.btnOruro);
@@ -96,4 +80,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
         startActivity(new Intent(this, ClimaCiudad.class));
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+
 }
