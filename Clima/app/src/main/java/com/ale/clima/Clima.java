@@ -11,6 +11,7 @@ public class Clima {
     private double tempMinima;
     private int humedad;
     private double presion;
+    private String descripcion;
 
     public Clima(double tempActual, double tempMaxima, double tempMinima, int humedad, double presion){
         this.tempActual = tempActual;
@@ -18,7 +19,13 @@ public class Clima {
         this.tempMinima = tempMinima;
         this.humedad = humedad;
         this.presion = presion;
+        descripcion ="";
     }
+
+    public void setDescripcion(String desc){
+        descripcion = desc;
+    }
+    public String getDescripcion(){ return descripcion;}
 
     public void setTempActual(double tempActual) {
         this.tempActual = tempActual;

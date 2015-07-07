@@ -4,6 +4,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.impl.client.BasicResponseHandler;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -21,6 +22,7 @@ public class JSONResponseHandler implements ResponseHandler<Clima> {
         String JSONResponse = new BasicResponseHandler().handleResponse(response);
         try {
             JSONObject responseObject = (JSONObject) new JSONTokener(JSONResponse).nextValue();
+
             JSONObject mainObject=  responseObject.getJSONObject("main");
             result.setTempActual(mainObject.getDouble("temp"));
             result.setTempMaxima(mainObject.getDouble("temp_max"));
@@ -28,6 +30,9 @@ public class JSONResponseHandler implements ResponseHandler<Clima> {
             result.setHumedad(mainObject.getInt("humidity"));
             result.setPresion(mainObject.getInt("pressure"));
 
+            JSONArray weatherSet = responseObject.getJSONArray("weather");
+            JSONObject weather = (JSONObject) weatherSet.get(0);
+            result.setDescripcion(weather.getString("description"));
 
         }catch (JSONException e) {
             e.printStackTrace();

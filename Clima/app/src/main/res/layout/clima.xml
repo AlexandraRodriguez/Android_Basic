@@ -18,17 +18,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Ciudad"
+            android:textSize="20dp"
             android:textColor="@color/light_gray"
             android:layout_gravity="right"
             android:id="@+id/ciudad_actual"
-            android:layout_weight="1" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="FechaActual"
-            android:textColor="@color/light_gray"
-            android:layout_gravity="right"
-            android:id="@+id/fecha_actual"
             android:layout_weight="1" />
 
     </LinearLayout>
@@ -71,19 +64,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Temperatura Maxima: "
+                    android:text="Maxima: "
                     android:id="@+id/tempMax"
                     android:layout_margin="10dp"
-                    android:textSize="15dp"
+                    android:textSize="18dp"
                     android:textColor="@color/aqua"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Temperatura Minima: "
+                    android:text="Minima: "
                     android:textColor="@color/aqua"
                     android:layout_margin="10dp"
                     android:id="@+id/tempMin"
-                    android:textSize="15dp"/>
+                    android:textSize="18dp"/>
             </LinearLayout>
             <LinearLayout
                 android:orientation="vertical"
@@ -97,7 +90,7 @@
                     android:textColor="@color/aqua"
                     android:id="@+id/humedad"
                     android:layout_margin="10dp"
-                    android:textSize="15dp"/>
+                    android:textSize="18dp"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -105,7 +98,7 @@
                     android:textColor="@color/aqua"
                     android:layout_margin="10dp"
                     android:id="@+id/presion"
-                    android:textSize="15dp"/>
+                    android:textSize="18dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -117,7 +110,7 @@
         android:id="@+id/actualizar"
         android:layout_weight="0.5"
         android:layout_gravity="center"
-        android:textColor="@color/lavender"/>
+        android:textColor="@color/white"/>
 
 
 </LinearLayout>

@@ -5,8 +5,9 @@ package com.ale.clima.util;
  */
 public class Conversor {
 
-    public static double kelvinToCelsius(double kelvin){
-        return kelvin - 273.15;
+    public static int kelvinToCelsius(double kelvin){
+
+        return (int)(kelvin - 273.15);
     }
 
     private static String ciudad;

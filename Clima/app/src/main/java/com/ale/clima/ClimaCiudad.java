@@ -87,6 +87,7 @@ public class ClimaCiudad extends Activity {
             tempMin.append(result.getTempMinima());
             humedad.append(result.getHumedad());
             presion.append(result.getPresion());
+            descripcion.setText(result.getDescripcion());
         }
     }
 
