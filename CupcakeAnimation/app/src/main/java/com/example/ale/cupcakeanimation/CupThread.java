@@ -14,6 +14,10 @@ public class CupThread extends Thread {
         run = false;
     }
 
+    public SurfaceHolder getSurfaceHolder(){
+        return surfaceHolder;
+    }
+
     public void setRunning(boolean run){
         this.run = run;
     }
@@ -29,9 +33,8 @@ public class CupThread extends Thread {
                     panel.onDraw(c);
                 }
             }finally {
-                // do this in a finally so that if an exception is thrown
-                // during the above, we don't leave the Surface in an
-                // inconsistent state
+                // if an exception is thrown during the above,
+                // we don't leave the Surface in an inconsistent state
                 if (c != null) {
                     surfaceHolder.unlockCanvasAndPost(c);
                 }

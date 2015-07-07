@@ -12,6 +12,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.Window;
 
+import java.util.ArrayList;
+
 public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle bundle){
@@ -22,30 +24,40 @@ public class MainActivity extends Activity {
 
     class Panel extends SurfaceView implements SurfaceHolder.Callback{
         private CupThread thread;
-        private int x;
-        private int y;
+        private ArrayList<GraphicObject> cupcakeGraphics = new ArrayList<GraphicObject>();
 
         public Panel(Context context){
             super(context);
             getHolder().addCallback(this);
             thread = new CupThread(getHolder(), this);
             setFocusable(true);
-            x=20; y=20;
-        }
-
-        @Override
-        public void onDraw(Canvas canvas){
-            Bitmap cupcake = BitmapFactory.decodeResource(getResources(), R.drawable.kawaiicupcake1);
-            canvas.drawColor(Color.parseColor("#f092b0"));
-            canvas.drawBitmap(cupcake, x-(cupcake.getWidth()/2), y-(cupcake.getHeight()/2), null);
         }
 
         @Override
         public boolean onTouchEvent(MotionEvent event){
-            x = (int) event.getX();
-            y = (int) event.getY();
-            return true;
+            synchronized (thread.getSurfaceHolder()){
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    GraphicObject cupcakeGraphic = new GraphicObject(BitmapFactory.decodeResource(getResources(), R.drawable.kawaiicupcake1));
+                    cupcakeGraphic.getCoordinates().setX((int)event.getX() - cupcakeGraphic.getGraphic().getWidth()/2);
+                    cupcakeGraphic.getCoordinates().setY((int) event.getY() - cupcakeGraphic.getGraphic().getHeight() / 2);
+                    cupcakeGraphics.add(cupcakeGraphic);
+                }
+                return true;
+            }
         }
+
+        @Override
+        public void onDraw(Canvas canvas){
+            Bitmap bitmap;
+            canvas.drawColor(Color.parseColor("#f092b0"));
+            GraphicObject.Coordinates coords;
+            for(GraphicObject graphic: cupcakeGraphics){
+                bitmap = graphic.getGraphic();
+                coords = graphic.getCoordinates();
+                canvas.drawBitmap(bitmap, coords.getX(), coords.getY(), null);
+            }
+        }
+
 
         @Override
         public void surfaceCreated(SurfaceHolder holder) {
@@ -54,9 +66,7 @@ public class MainActivity extends Activity {
         }
 
         @Override
-        public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-        }
+        public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {}
 
         @Override
         public void surfaceDestroyed(SurfaceHolder holder) {
