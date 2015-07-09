@@ -1,7 +1,10 @@
 package com.campeonato.alexandra.copa;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.campeonato.alexandra.copa.util.Juego;
@@ -23,10 +26,13 @@ public class Final extends Activity {
     private TextView res;
     private TextView winner;
 
+
     @Override
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
         setContentView(R.layout.la_final);
+
+        Semifinales.sem.finish();
 
         grupo1 = new ArrayList<String>();
         grupo2 = new ArrayList<String>();
@@ -46,6 +52,15 @@ public class Final extends Activity {
             Juego.setFinales(true);
         }
         setVistas();
+    }
+
+    public void startMain(View v){
+        startActivity( new Intent(this, MainActivity.class));
+        finishFinal(v);
+    }
+
+    public void finishFinal(View v){
+        Final.this.finish();
     }
 
     public String jugar(){

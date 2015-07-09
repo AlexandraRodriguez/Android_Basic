@@ -3,52 +3,68 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Preliminares"
-        android:id="@+id/preliminares"
-        android:background="@color/light_red"
-        android:layout_margin="14sp"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Cuartos de Final"
-        android:id="@+id/cuartos"
-        android:background="@color/light_red"
-        android:layout_margin="14sp" />
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Semifinales"
-        android:id="@+id/semifinales"
-        android:background="@color/light_red"
-        android:layout_margin="14sp"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Final"
-        android:id="@+id/finales"
-        android:background="@color/light_red"
-        android:layout_margin="14sp"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Resultados"
-        android:id="@+id/resultados"
-        android:background="@color/light_red"
-        android:layout_margin="14sp"/>
-
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textomain"
-        android:background="@color/light_red"
-        android:textSize="40dp" />
+        android:text="Copa America"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:layout_margin="10dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_margin="10dp">
+
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="P"
+                android:id="@+id/btnPreliminares"
+                android:onClick="startPreliminares"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="C"
+                android:id="@+id/btnCuartos"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="S"
+                android:id="@+id/btnSemifinales"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"/>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="F"
+                android:id="@+id/btnFinal"
+                android:layout_weight="1"/>
+    </LinearLayout>
+
+
+   <LinearLayout
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:orientation="vertical"
+       android:layout_margin="15dp">
+
+   </LinearLayout>
+
+
+
 
 
 </LinearLayout>

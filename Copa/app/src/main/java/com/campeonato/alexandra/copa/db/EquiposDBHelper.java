@@ -4,9 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by Ale on 03/07/2015.
- */
+
 public class EquiposDBHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "CopaAmerica";

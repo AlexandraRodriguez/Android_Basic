@@ -1,8 +1,11 @@
 package com.campeonato.alexandra.copa;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import com.campeonato.alexandra.copa.util.Juego;
 import java.util.ArrayList;
@@ -21,10 +24,16 @@ public class Preliminares extends Activity {
     private ArrayList<String> grupoB;
     private ArrayList<String> grupoC;
 
+    private Button btnCuartos;
+    public static Activity pre;
+
     @Override
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
         setContentView(R.layout.preliminares);
+
+        MainActivity.main.finish();
+        pre = this;
 
         grupo1 = new ArrayList<String>();
         grupo2 = new ArrayList<String>();
@@ -46,6 +55,8 @@ public class Preliminares extends Activity {
         equipos.add("Jamaica");
         equipos.add("Ecuador");
 
+        btnCuartos = (Button)findViewById(R.id.btnCuartos);
+
         if(!Juego.getPreliminares()) {
             agrupar();
             Juego.jugarPorGrupo(grupoA, grupo1, grupo2, resultados);
@@ -54,6 +65,10 @@ public class Preliminares extends Activity {
             Juego.setPreliminares(true);
         }
         setVistas();
+    }
+
+    public void startCuartos(View v){
+        startActivity( new Intent(this, Cuartos.class));
     }
 
     public void agrupar(){
