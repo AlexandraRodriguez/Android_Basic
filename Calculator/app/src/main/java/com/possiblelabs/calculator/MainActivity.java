@@ -95,20 +95,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 String texto = txtResult.getText().toString();
                 int tam = texto.length();
                 if(!op1_set)
-                    if(tam>0){
-                        if(tam==1) {
+                    if(tam>0)
+                        if(tam==1)
                             txtResult.setText("0");
-                        }else{
-                            if(tam==2){
-                                texto = texto.charAt(0)+"";
-                                txtResult.setText(texto);
-                            }else{
-                                texto = texto.substring(0, tam-2);
-                                txtResult.setText(texto);
-                        }
-                    }
-                }
+                        else if(tam==2)
+                                txtResult.setText(texto.charAt(0)+"");
+                            else
+                                txtResult.setText(texto.substring(0, tam-1));
             }
+
         });
 
         btnNeg.setOnClickListener(new View.OnClickListener() {
@@ -226,12 +221,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
                 if (op1_set) {
                     if(!neg)
-                    txtResult.setText("");
+                    txtResult.setText("0");
                     op1_set = false;
                 }
 
                 String v = btn.getText().toString();
-                txtResult.append(v);
+
+                if(v.equals(".")){
+                    String text = txtResult.getText().toString();
+                    if(text.indexOf(".")==-1)
+                        txtResult.append(v);
+                }else{
+                    txtResult.append(v);
+                }
             }
         }
     }
