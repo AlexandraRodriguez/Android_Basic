@@ -3,17 +3,14 @@ package com.campeonato.alexandra.copa;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
-import com.campeonato.alexandra.copa.db.EquiposDBHelper;
 import com.campeonato.alexandra.copa.db.EquiposDataBaseManager;
+
+import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
@@ -21,10 +18,6 @@ public class MainActivity extends Activity {
     public static Activity main;
     private EquiposDataBaseManager manager;
 
-    //private EquiposDataBaseManager manager;
-    //private Cursor cursor;
-    //private ListView lista;
-    //private SimpleCursorAdapter cursorAdapter;
 
     @Override
     public void onCreate(Bundle bundle){
@@ -35,13 +28,6 @@ public class MainActivity extends Activity {
 
         manager = new EquiposDataBaseManager(this);
         crearRegistro();
-        
-        //cursor = manager.cargarCursorRegistro();
-        //lista = (ListView)findViewById(R.id.listViewBase);
-        //String[] from = new String[]{manager.CN_EQUIPO, manager.CN_PUNTAJE};
-        //int[] to = new int[]{android.R.id.text1, android.R.id.text2};
-        //cursorAdapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item,cursor, from, to,0);
-        //lista.setAdapter(cursorAdapter);
     }
 
     public void startPreliminares(View v){

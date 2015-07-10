@@ -7,6 +7,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Copa America"
+        android:id="@+id/titulo"
         android:gravity="center"
         android:textSize="30sp"
         android:layout_margin="10dp"/>
@@ -34,7 +35,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="C"
-                android:id="@+id/btnCuartos"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"/>
 
@@ -42,7 +42,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="S"
-                android:id="@+id/btnSemifinales"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"/>
 
@@ -50,7 +49,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="F"
-                android:id="@+id/btnFinal"
                 android:layout_weight="1"/>
     </LinearLayout>
 

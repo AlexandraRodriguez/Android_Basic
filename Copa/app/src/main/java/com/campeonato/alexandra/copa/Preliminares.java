@@ -2,13 +2,19 @@ package com.campeonato.alexandra.copa;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.campeonato.alexandra.copa.db.EquiposDataBaseManager;
+import com.campeonato.alexandra.copa.util.Clasificados;
 import com.campeonato.alexandra.copa.util.Juego;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Preliminares extends Activity {
@@ -16,7 +22,6 @@ public class Preliminares extends Activity {
     private ArrayList<String> grupo1;
     private ArrayList<String> grupo2;
     private ArrayList<String> resultados;
-    private ArrayList<String> equipos;
     private ListView lista1;
     private ListView lista2;
     private ListView listaRes;
@@ -24,8 +29,11 @@ public class Preliminares extends Activity {
     private ArrayList<String> grupoB;
     private ArrayList<String> grupoC;
 
+    private List<String> equipos;
+    EquiposDataBaseManager manager;
+
     private Button btnCuartos;
-    public static Activity pre;
+    public static Activity preliminaresActivity;
 
     @Override
     public void onCreate(Bundle bundle){
@@ -33,7 +41,7 @@ public class Preliminares extends Activity {
         setContentView(R.layout.preliminares);
 
         MainActivity.main.finish();
-        pre = this;
+        preliminaresActivity = this;
 
         grupo1 = new ArrayList<String>();
         grupo2 = new ArrayList<String>();
@@ -41,29 +49,30 @@ public class Preliminares extends Activity {
         grupoA = new ArrayList<String>();
         grupoB = new ArrayList<String>();
         grupoC = new ArrayList<String>();
-        equipos = new ArrayList<String>();
-        equipos.add("Bolivia");
-        equipos.add("Brasil");
-        equipos.add("Argentina");
-        equipos.add("Peru");
-        equipos.add("Chile");
-        equipos.add("Paraguay");
-        equipos.add("Uruguay");
-        equipos.add("Colombia");
-        equipos.add("Mexico");
-        equipos.add("Venezuela");
-        equipos.add("Jamaica");
-        equipos.add("Ecuador");
-
         btnCuartos = (Button)findViewById(R.id.btnCuartos);
 
-        if(!Juego.getPreliminares()) {
-            agrupar();
-            Juego.jugarPorGrupo(grupoA, grupo1, grupo2, resultados);
-            Juego.jugarPorGrupo(grupoB, grupo1, grupo2, resultados);
-            Juego.jugarPorGrupo(grupoC, grupo1, grupo2, resultados);
-            Juego.setPreliminares(true);
+        manager = new EquiposDataBaseManager(this);
+
+        equipos = new ArrayList<String>();
+
+        Cursor c = manager.getClasificados();
+        if(c.moveToFirst()){
+            do{
+                equipos.add(c.getString(0));
+            }while (c.moveToNext());
         }
+
+        agrupar();
+        Juego.jugarPorGrupo(grupoA, grupo1, grupo2, resultados, manager);
+        Juego.jugarPorGrupo(grupoB, grupo1, grupo2, resultados, manager);
+        Juego.jugarPorGrupo(grupoC, grupo1, grupo2, resultados, manager);
+
+        Clasificados.setClasificados(manager);
+        /*manager.cambiarClasificado("Bolivia", 0);
+        manager.cambiarClasificado("Mexico", 0);
+        manager.cambiarClasificado("Ecuador", 0);
+        manager.cambiarClasificado("Jamaica", 0);*/
+
         setVistas();
     }
 
@@ -73,7 +82,8 @@ public class Preliminares extends Activity {
 
     public void agrupar(){
         int a = 4; int b = 4; int c = 4;
-        int tam = 12; int i;
+        int tam = 12;
+        int i = 0;
         Random r = new Random();
         while(!equipos.isEmpty()){
             i = r.nextInt(tam);
@@ -111,4 +121,5 @@ public class Preliminares extends Activity {
         lista2 = (ListView)findViewById(R.id.listPre2);
         lista2.setAdapter(adapter3);
     }
+
 }

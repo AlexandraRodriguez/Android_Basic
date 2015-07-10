@@ -3,12 +3,14 @@ package com.campeonato.alexandra.copa;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.campeonato.alexandra.copa.db.EquiposDataBaseManager;
 import com.campeonato.alexandra.copa.util.Juego;
 
 import java.util.ArrayList;
@@ -22,39 +24,43 @@ public class Semifinales extends Activity {
     private ArrayList<String> grupo1;
     private ArrayList<String> grupo2;
     private ArrayList<String> resultados;
-    private ArrayList<String> equipos;
-    private List<String> clasificados;
     private ListView lista1;
     private ListView lista2;
     private ListView listaRes;
 
     private Button btnFinal;
-    public static Activity sem;
+    public static Activity semifinalesActivity;
+
+    EquiposDataBaseManager manager;
+    private ArrayList<String> equipos;
 
     @Override
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
         setContentView(R.layout.semifinales);
 
-        Cuartos.cuar.finish();
-        sem = this;
+        Cuartos.cuartosActivity.finish();
+        semifinalesActivity = this;
 
         grupo1 = new ArrayList<String>();
         grupo2 = new ArrayList<String>();
         resultados = new ArrayList<String>();
+
+        manager = new EquiposDataBaseManager(this);
         equipos = new ArrayList<String>();
-        equipos.add("Chile");
-        equipos.add("Peru");
-        equipos.add("Argentina");
-        equipos.add("Paraguay");
+
+        Cursor c = manager.getClasificados();
+        if(c.moveToFirst()){
+            do{
+                equipos.add(c.getString(0));
+            }while (c.moveToNext());
+        }
 
         btnFinal = (Button)findViewById(R.id.btnFinal);
 
-        if(!Juego.getSemifinales())
-        if(Juego.getCuartos()) {
-            clasificados = jugarTodos(equipos, grupo1, grupo2, resultados);
-            Juego.setSemifinales(true);
-        }
+
+        Juego.jugarTodos(equipos, grupo1, grupo2, resultados, manager);
+
         setVistas();
     }
 
@@ -62,10 +68,6 @@ public class Semifinales extends Activity {
         startActivity( new Intent(this, Final.class));
     }
 
-    private List<String> jugarTodos(ArrayList<String> e, ArrayList<String> gru1,
-                                    ArrayList<String> gru2, ArrayList<String> result) {
-        return Juego.jugarTodos(e, gru1, gru2, result);
-    }
 
     public void setVistas(){
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,

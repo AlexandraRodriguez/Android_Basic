@@ -24,8 +24,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="P"
-            android:id="@+id/btnPreliminares"
-            android:onClick="startPreliminares"
             android:layout_weight="1"
             android:layout_marginRight="10dp"/>
 
@@ -33,7 +31,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="C"
-            android:id="@+id/btnCuartos"
             android:layout_weight="1"
             android:layout_marginRight="10dp"/>
 
@@ -50,7 +47,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="F"
-            android:id="@+id/btnFinal"
             android:layout_weight="1"/>
     </LinearLayout>
 
@@ -77,7 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:id="@+id/list1">
+                android:id="@+id/list1"
+                android:layout_gravity="center">
 
             </ListView>
 
@@ -86,7 +83,8 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:background="@color/gray"
-                android:id="@+id/listRes">
+                android:id="@+id/listRes"
+                android:layout_gravity="center">
 
             </ListView>
 
@@ -94,7 +92,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:id="@+id/list2">
+                android:id="@+id/list2"
+                android:layout_gravity="center">
 
             </ListView>
 
