@@ -4,12 +4,22 @@ public class Food {
     private int calories;
     private int fat;
     private String name;
+    private String serving;
 
 
-    public Food(String name, int calories, int fat){
+    public Food(String name, int calories, int fat, String serving){
         this.name = name;
         this.calories = calories;
         this.fat = fat;
+        this.serving = serving;
+    }
+
+    public String getServing() {
+        return serving;
+    }
+
+    public void setServing(String serving) {
+        this.serving = serving;
     }
 
     public String getCalories() {

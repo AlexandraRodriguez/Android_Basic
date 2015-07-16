@@ -7,9 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-/**
- * Created by LUIS on 15/07/2015.
- */
+
 public class ImageAdapter extends BaseAdapter {
 
     private Context context;
@@ -25,7 +23,7 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return position;
+        return Grid.getData()[position];
     }
 
     @Override

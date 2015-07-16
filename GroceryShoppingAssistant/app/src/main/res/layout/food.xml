@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/foodImage"
-        android:src="@drawable/strawberries"/>
+        android:src="@drawable/strawberries" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,12 +18,24 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calories"
+        android:text="Calories: "
         android:id="@+id/calories" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Fat"
+        android:text="Total Fat: "
         android:id="@+id/fat" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Serving: "
+        android:id="@+id/serving" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:text="Get Information"/>
 </LinearLayout>
