@@ -1,17 +1,27 @@
 package com.example.ale.groceryshoppingassistant;
 
 public class Food {
-    private int calories;
-    private int fat;
+    private double calories;
+    private double fat;
     private String name;
     private String serving;
+    private int servingSize;
 
 
-    public Food(String name, int calories, int fat, String serving){
+    public Food(String name, double calories, double fat, String serving, int servingSize){
         this.name = name;
         this.calories = calories;
         this.fat = fat;
         this.serving = serving;
+        this.servingSize = servingSize;
+    }
+
+    public String getServingSize() {
+        return servingSize+"";
+    }
+
+    public void setServingSize(int servingSize) {
+        this.servingSize = servingSize;
     }
 
     public String getServing() {

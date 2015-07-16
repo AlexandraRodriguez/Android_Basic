@@ -75,12 +75,11 @@ public class FoodActivity extends Activity {
 
         @Override
         protected void onPostExecute(Food result) {
-            //if (null != mClient)
-            //  mClient.close();
+
             txtName.setText(result.getName());
             txtCal.append(result.getCalories());
             txtFat.append(result.getFat());
-            txtServing.append(result.getServing());
+            txtServing.setText(result.getServingSize()+" "+result.getServing());
         }
     }
 }

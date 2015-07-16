@@ -1,41 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/foodImage"
-        android:src="@drawable/strawberries" />
+        android:src="@drawable/strawberries"
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:id="@+id/name" />
+        android:id="@+id/name"
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:textColor="@color/orange" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calories: "
-        android:id="@+id/calories" />
+        android:id="@+id/calories"
+        android:textSize="20dp"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/petroleo"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total Fat: "
-        android:id="@+id/fat" />
+        android:id="@+id/fat"
+        android:textSize="20dp"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/petroleo"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Serving: "
-        android:id="@+id/serving" />
+        android:id="@+id/serving"
+        android:textSize="20dp"
+        android:layout_marginLeft="35dp"
+        android:textColor="@color/petroleo"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button"
-        android:text="Get Information"/>
+        android:text="Get Information"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"/>
 </LinearLayout>

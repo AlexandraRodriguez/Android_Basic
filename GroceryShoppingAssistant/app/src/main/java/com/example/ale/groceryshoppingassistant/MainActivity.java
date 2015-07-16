@@ -2,14 +2,26 @@ package com.example.ale.groceryshoppingassistant;
 
 
 import android.app.Activity;
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -18,27 +30,27 @@ public class MainActivity extends Activity {
     public static final String EXTRA_POS = "POS";
     public static final String EXTRA_IMAGE_ID = "ID";
     private URLDataBaseManager manager;
+    private TaskDBHelper helper;
+    private SimpleCursorAdapter cursorAdapter;
+    private ListView tasksList;
 
     @Override
-    public void onCreate(Bundle bundle){
+    public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.main_activity);
 
-        tabHost = (TabHost)findViewById(R.id.tabhost);
+        tabHost = (TabHost) findViewById(R.id.tabhost);
         tabHost.setup();
 
         TabHost.TabSpec spec = tabHost.newTabSpec("Tab1").setIndicator("Nutritional Values").setContent(R.id.tab1);
         tabHost.addTab(spec);
 
-        spec = tabHost.newTabSpec("Tab2").setIndicator("Recommendations").setContent(R.id.tab2);
-        tabHost.addTab(spec);
-
-        spec = tabHost.newTabSpec("Tab3").setIndicator("Grocery shopping List").setContent(R.id.tab3);
+        spec = tabHost.newTabSpec("Tab2").setIndicator("Grocery shopping List").setContent(R.id.tab2);
         tabHost.addTab(spec);
 
         tabHost.setCurrentTab(0);
 
-        grid = (GridView)findViewById(R.id.grid);
+        grid = (GridView) findViewById(R.id.grid);
         grid.setAdapter(new ImageAdapter(this));
 
         manager = new URLDataBaseManager(this);
@@ -54,11 +66,74 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-        //setGrid();
+
+        //tasksList = (ListView)findViewById(R.id.tasksList);
+        updateUI();
     }
 
-    public void setGrid(){
+    public void addTask(View v){
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        builder.setTitle("Add");
+        builder.setMessage("What do you want to buy?");
+        final EditText inputField = new EditText(this);
+        builder.setView(inputField);
+        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String task = inputField.getText().toString();
 
+                helper = new TaskDBHelper(MainActivity.this);
+                SQLiteDatabase db = helper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+
+                values.clear();
+                values.put(TaskDBHelper.TaskContract.Columns.TASK,task);
+
+                db.insertWithOnConflict(TaskDBHelper.TaskContract.TABLE,null,values,SQLiteDatabase.CONFLICT_IGNORE);
+                updateUI();
+            }
+        });
+
+        builder.setNegativeButton("Cancel",null);
+
+        builder.create().show();
+    }
+
+
+    public void updateUI(){
+        helper = new TaskDBHelper(MainActivity.this);
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.query(TaskDBHelper.TaskContract.TABLE,
+                new String[]{TaskDBHelper.TaskContract.Columns._ID, TaskDBHelper.TaskContract.Columns.TASK},
+                null, null, null, null, null);
+
+        cursorAdapter = new SimpleCursorAdapter(
+                this,
+                R.layout.tasks,
+                cursor,
+                new String[]{TaskDBHelper.TaskContract.Columns.TASK},
+                new int[]{R.id.taskTextView},
+                0
+        );
+        tasksList = (ListView)findViewById(R.id.tasksList);
+        tasksList.setAdapter(cursorAdapter);
+    }
+
+    public void onDoneButtonClick(View view){
+        View v = (View) view.getParent();
+        TextView taskTextView = (TextView) v.findViewById(R.id.taskTextView);
+        String task = taskTextView.getText().toString();
+
+        String sql = String.format("DELETE FROM %s WHERE %s = '%s'",
+                TaskDBHelper.TaskContract.TABLE,
+                TaskDBHelper.TaskContract.Columns.TASK,
+                task);
+
+
+        helper = new TaskDBHelper(MainActivity.this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.execSQL(sql);
+        updateUI();
     }
 
     public void crearURLs(){

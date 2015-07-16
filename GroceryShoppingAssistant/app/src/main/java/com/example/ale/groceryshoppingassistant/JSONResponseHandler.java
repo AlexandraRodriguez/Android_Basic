@@ -14,7 +14,7 @@ import java.io.IOException;
 public class JSONResponseHandler implements ResponseHandler<Food> {
     @Override
     public Food handleResponse(HttpResponse response) throws ClientProtocolException, IOException {
-        Food result = new Food("", 0, 0, "");
+        Food result = new Food("", 0, 0, "",0);
         String JSONResponse = new BasicResponseHandler().handleResponse(response);
         try{
             JSONObject responseObject = (JSONObject) new JSONTokener(JSONResponse).nextValue();
@@ -28,6 +28,7 @@ public class JSONResponseHandler implements ResponseHandler<Food> {
             result.setName(fields.getString("item_name"));
             result.setCalories(fields.getInt("nf_calories"));
             result.setFat(fields.getInt("nf_total_fat"));
+            result.setServingSize(fields.getInt("nf_serving_size_qty"));
             result.setServing(fields.getString("nf_serving_size_unit"));
 
             /*JSONObject mainObject=  responseObject.getJSONObject("hits");
