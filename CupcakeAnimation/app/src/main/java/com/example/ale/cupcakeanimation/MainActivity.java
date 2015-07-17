@@ -46,6 +46,46 @@ public class MainActivity extends Activity {
             }
         }
 
+        public void updatePhysics(){
+            GraphicObject.Coordinates coord;
+            GraphicObject.Speed speed;
+            for (GraphicObject cupcake : cupcakeGraphics) {
+                coord = cupcake.getCoordinates();
+                speed = cupcake.getSpeed();
+
+                //direccion
+                if (speed.getXDirection() == GraphicObject.Speed.xDirectionRight) {
+                    coord.setX(coord.getX() + speed.getX());
+                } else {
+                    coord.setX(coord.getX() - speed.getX());
+                }
+                if (speed.getYDirection() == GraphicObject.Speed.yDirectionDown) {
+                    coord.setY(coord.getY() + speed.getY());
+                } else {
+                    coord.setY(coord.getY() - speed.getY());
+                }
+
+                //bordes de x
+                if (coord.getX() < 0) {
+                    speed.changeXDirection();
+                    coord.setX(-coord.getX());
+                } else if (coord.getX() + cupcake.getGraphic().getWidth() > getWidth()) {
+                    speed.changeXDirection();
+                    coord.setX(coord.getX() + getWidth() - (coord.getX() + cupcake.getGraphic().getWidth()));
+                }
+
+                //bordes de y
+                if (coord.getY() < 0) {
+                    speed.changeYDirection();
+                    coord.setY(-coord.getY());
+                } else if (coord.getY() + cupcake.getGraphic().getHeight() > getHeight()) {
+                    speed.changeYDirection();
+                    coord.setY(coord.getY() + getHeight() - (coord.getY() + cupcake.getGraphic().getHeight()));
+                }
+
+            }
+        }
+
         @Override
         public void onDraw(Canvas canvas){
             Bitmap bitmap;
@@ -70,9 +110,6 @@ public class MainActivity extends Activity {
 
         @Override
         public void surfaceDestroyed(SurfaceHolder holder) {
-            // simply copied from sample application LunarLander:
-            // we have to tell thread to shut down & wait for it to finish, or else
-            // it might touch the Surface after we return and explode
             boolean retry = true;
             thread.setRunning(false);
             while (retry) {
@@ -80,7 +117,7 @@ public class MainActivity extends Activity {
                     thread.join();
                     retry = false;
                 } catch (InterruptedException e) {
-                    // we will try it again and again...
+
                 }
             }
         }

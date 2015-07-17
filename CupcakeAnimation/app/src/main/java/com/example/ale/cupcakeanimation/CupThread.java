@@ -30,11 +30,10 @@ public class CupThread extends Thread {
             try {
                 c = surfaceHolder.lockCanvas(null);
                 synchronized (surfaceHolder){
+                    panel.updatePhysics();
                     panel.onDraw(c);
                 }
             }finally {
-                // if an exception is thrown during the above,
-                // we don't leave the Surface in an inconsistent state
                 if (c != null) {
                     surfaceHolder.unlockCanvasAndPost(c);
                 }
